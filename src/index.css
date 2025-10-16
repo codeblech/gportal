@@ -1,0 +1,239 @@
+@import "tailwindcss";
+
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* shadcn design tokens */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --shadow-2xs: var(--shadow-offset-x, 0) var(--shadow-offset-y, 1px) var(--shadow-blur, 2px) var(--shadow-spread, 0) color-mix(in srgb, var(--shadow-color, #000000) calc(var(--shadow-opacity, 0.05) * 100%), transparent);
+  --shadow-xs: var(--shadow-offset-x, 0) var(--shadow-offset-y, 1px) var(--shadow-blur, 3px) var(--shadow-spread, 0) color-mix(in srgb, var(--shadow-color, #000000) calc(var(--shadow-opacity, 0.1) * 100%), transparent);
+  --shadow-sm: var(--shadow-offset-x, 0) var(--shadow-offset-y, 1px) var(--shadow-blur, 4px) var(--shadow-spread, 0) color-mix(in srgb, var(--shadow-color, #000000) calc(var(--shadow-opacity, 0.1) * 100%), transparent);
+  --shadow: var(--shadow-offset-x, 0) var(--shadow-offset-y, 2px) var(--shadow-blur, 6px) var(--shadow-spread, 0) color-mix(in srgb, var(--shadow-color, #000000) calc(var(--shadow-opacity, 0.1) * 100%), transparent);
+  --shadow-md: var(--shadow-offset-x, 0) var(--shadow-offset-y, 4px) var(--shadow-blur, 10px) var(--shadow-spread, -1px) color-mix(in srgb, var(--shadow-color, #000000) calc(var(--shadow-opacity, 0.1) * 100%), transparent);
+  --shadow-lg: var(--shadow-offset-x, 0) var(--shadow-offset-y, 8px) var(--shadow-blur, 16px) var(--shadow-spread, -2px) color-mix(in srgb, var(--shadow-color, #000000) calc(var(--shadow-opacity, 0.1) * 100%), transparent);
+  --shadow-xl: var(--shadow-offset-x, 0) var(--shadow-offset-y, 12px) var(--shadow-blur, 24px) var(--shadow-spread, -3px) color-mix(in srgb, var(--shadow-color, #000000) calc(var(--shadow-opacity, 0.25) * 100%), transparent);
+  --shadow-2xl: var(--shadow-offset-x, 0) var(--shadow-offset-y, 24px) var(--shadow-blur, 48px) var(--shadow-spread, -6px) color-mix(in srgb, var(--shadow-color, #000000) calc(var(--shadow-opacity, 0.3) * 100%), transparent);
+
+  /* custom JPortal colors */
+  --color-grade-aa: var(--grade-aa);
+  --color-grade-a: var(--grade-a);
+  --color-grade-bb: var(--grade-bb);
+  --color-grade-b: var(--grade-b);
+  --color-grade-cc: var(--grade-cc);
+  --color-grade-c: var(--grade-c);
+  --color-grade-d: var(--grade-d);
+  --color-grade-f: var(--grade-f);
+
+  --color-marks-outstanding: var(--marks-outstanding);
+  --color-marks-good: var(--marks-good);
+  --color-marks-average: var(--marks-average);
+  --color-marks-poor: var(--marks-poor);
+}
+
+
+:root {
+  /* Theme variables will be set dynamically by the theme system */
+  /* Default fallback values */
+  --background: hsl(232, 34%, 17%);
+  --foreground: hsl(192, 29%, 73%);
+  --card: hsl(222 84% 4.9%);
+  --card-foreground: hsl(210 40% 98%);
+  --popover: hsl(222 84% 4.9%);
+  --popover-foreground: hsl(210 40% 98%);
+  --primary: hsl(210, 50%, 55%);
+  --primary-foreground: hsl(222.2 84% 4.9%);
+  --secondary: hsl(217.2 32.6% 17.5%);
+  --secondary-foreground: hsl(210 40% 98%);
+  --muted: hsl(217.2 32.6% 17.5%);
+  --muted-foreground: hsl(215 20.2% 65.1%);
+  --accent: hsl(217.2 32.6% 17.5%);
+  --accent-foreground: hsl(210 40% 98%);
+  --destructive: hsl(0 62.8% 30.6%);
+  --destructive-foreground: hsl(210 40% 98%);
+  --border: hsl(217.2 32.6% 17.5%);
+  --input: hsl(217.2 32.6% 17.5%);
+  --ring: hsl(210 40% 98%);
+  --chart-1: hsl(312, 64%, 42%);
+  --chart-2: hsl(168, 68%, 46%);
+  --chart-3: hsl(30 80% 55%);
+  --chart-4: hsl(142 76% 36%);
+  --chart-5: hsl(0 84.2% 60.2%);
+
+  /* Font and spacing variables */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --radius: 0.5rem;
+  --shadow-color: hsl(0 0% 0%);
+  --shadow-opacity: 0.1;
+  --shadow-blur: 3px;
+  --shadow-spread: 0px;
+  --shadow-offset-x: 0;
+  --shadow-offset-y: 1px;
+  --letter-spacing: 0em;
+  --spacing: 0.25rem;
+
+  /* Sidebar variables */
+  --sidebar: hsl(217.2 32.6% 17.5%);
+  --sidebar-foreground: hsl(210 40% 98%);
+  --sidebar-primary: hsl(210, 50%, 55%);
+  --sidebar-primary-foreground: hsl(222.2 84% 4.9%);
+  --sidebar-accent: hsl(217.2 32.6% 17.5%);
+  --sidebar-accent-foreground: hsl(210 40% 98%);
+  --sidebar-border: hsl(217.2 32.6% 17.5%);
+  --sidebar-ring: hsl(210 40% 98%);
+
+  /* custom JPortal colors */
+  /* Grade colors */
+  --grade-aa: hsl(142 76% 36%);
+  --grade-a: hsl(120 60% 50%);
+  --grade-bb: hsl(60 90% 60%);
+  --grade-b: hsl(45 90% 60%);
+  --grade-cc: hsl(35 90% 60%);
+  --grade-c: hsl(25 90% 60%);
+  --grade-d: hsl(15 90% 60%);
+  --grade-f: hsl(0 84.2% 60.2%);
+
+  /* Marks colors */
+  --marks-outstanding: hsl(142 76% 36%);
+  --marks-good: hsl(45 90% 60%);
+  --marks-average: hsl(25 90% 60%);
+  --marks-poor: hsl(0 84.2% 60.2%);
+}
+
+/* View Transition Animations for Theme Switching */
+@supports (view-transition-name: none) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 1s;
+  }
+
+  ::view-transition-new(root) {
+    clip-path: circle(0 at var(--x, 50%) var(--y, 50%));
+    animation-name: expand;
+  }
+
+  ::view-transition-old(root) {
+    animation-name: shrink;
+  }
+
+  @keyframes expand {
+    to {
+      clip-path: circle(100vmax at var(--x, 50%) var(--y, 50%));
+    }
+  }
+
+  @keyframes shrink {
+    to {
+      clip-path: circle(0 at var(--x, 50%) var(--y, 50%));
+    }
+  }
+}
+
+/* Dark mode indicator (managed dynamically by theme system) */
+.dark {
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    --tw-ring-offset-width: 0px !important;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  * {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}
+
+/* Add smooth scrolling behavior */
+.snap-y {
+  scroll-behavior: smooth;
+}
+
+.snap-mandatory {
+  scroll-snap-type: y mandatory;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.overflow-y-auto::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.overflow-y-auto {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
