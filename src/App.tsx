@@ -1,14 +1,14 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import { ThemeProvider } from './components/theme-provider';
-import Login from './pages/Login';
-import Attendance from './pages/Attendance';
-import Grades from './pages/Grades';
-import Exams from './pages/Exams';
-import Subjects from './pages/Subjects';
-import Profile from './pages/Profile';
-import BottomNav from './components/BottomNav';
-import Header from './components/Header';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import { ThemeProvider } from "./components/theme-provider";
+import Login from "./pages/Login";
+import Attendance from "./pages/Attendance";
+import Grades from "./pages/Grades";
+import Exams from "./pages/Exams";
+import Subjects from "./pages/Subjects";
+import Profile from "./pages/Profile";
+import BottomNav from "./components/BottomNav";
+import Header from "./components/Header";
 
 // Layout component for authenticated pages
 function AuthenticatedLayout({ children }: { children: React.ReactNode }) {
@@ -27,15 +27,50 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/gportal">
           <Routes>
             <Route path="/" element={<Navigate to="/login" replace />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/attendance" element={<AuthenticatedLayout><Attendance /></AuthenticatedLayout>} />
-            <Route path="/grades" element={<AuthenticatedLayout><Grades /></AuthenticatedLayout>} />
-            <Route path="/exams" element={<AuthenticatedLayout><Exams /></AuthenticatedLayout>} />
-            <Route path="/subjects" element={<AuthenticatedLayout><Subjects /></AuthenticatedLayout>} />
-            <Route path="/profile" element={<AuthenticatedLayout><Profile /></AuthenticatedLayout>} />
+            <Route
+              path="/attendance"
+              element={
+                <AuthenticatedLayout>
+                  <Attendance />
+                </AuthenticatedLayout>
+              }
+            />
+            <Route
+              path="/grades"
+              element={
+                <AuthenticatedLayout>
+                  <Grades />
+                </AuthenticatedLayout>
+              }
+            />
+            <Route
+              path="/exams"
+              element={
+                <AuthenticatedLayout>
+                  <Exams />
+                </AuthenticatedLayout>
+              }
+            />
+            <Route
+              path="/subjects"
+              element={
+                <AuthenticatedLayout>
+                  <Subjects />
+                </AuthenticatedLayout>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <AuthenticatedLayout>
+                  <Profile />
+                </AuthenticatedLayout>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

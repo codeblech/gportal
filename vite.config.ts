@@ -39,16 +39,21 @@ export default defineConfig({
         orientation: "portrait",
         icons: [
           {
-            src: "icon-192.png",
-            sizes: "192x192",
-            type: "image/png",
-            purpose: "any maskable",
+            src: "pwa-icons/circle.ico",
+            sizes: "48x48",
           },
           {
-            src: "icon-512.png",
+            src: "pwa-icons/circle.svg",
+            sizes: "72x72 96x96",
+            purpose: "maskable",
+          },
+          {
+            src: "pwa-icons/circle.svg",
+            sizes: "128x128 256x256",
+          },
+          {
+            src: "pwa-icons/circle.svg",
             sizes: "512x512",
-            type: "image/png",
-            purpose: "any maskable",
           },
         ],
       },
