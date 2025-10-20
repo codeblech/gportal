@@ -55,7 +55,7 @@ export default function Alerts() {
 
         {unreadAlerts.length === 0 ? (
           <div className="rounded-lg border bg-card p-6 text-center text-card-foreground shadow-sm">
-            <p className="text-muted-foreground">No unread alerts</p>
+            <p className="text-muted-foreground">No alerts</p>
           </div>
         ) : (
           <div className="space-y-3">
@@ -71,7 +71,7 @@ export default function Alerts() {
                   <span className="text-sm font-semibold">{alert.heading}</span>
                 </div>
                 <p className="mb-2 text-sm text-muted-foreground">{alert.description}</p>
-                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                <div className="flex items-center gap-1 text-xs font-medium text-muted-foreground">
                   <Calendar className="h-3 w-3" />
                   {alert.date}
                 </div>
