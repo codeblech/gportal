@@ -31,7 +31,7 @@ export default {
 
       // Extract the path after /api/glbajaj
       // e.g., /api/glbajaj/Login -> /ISIMGLB/Login
-      const path = url.pathname.replace(/^\/api\/glbajaj/, '/ISIMGLB');
+      const path = url.pathname.replace(/^\/api\/glbajaj/, "/ISIMGLB");
 
       // Construct the target URL
       const targetUrl = `https://glbg.servergi.com:8072${path}${url.search}`;
@@ -42,7 +42,7 @@ export default {
       const modifiedRequest = new Request(targetUrl, {
         method: request.method,
         headers: request.headers,
-        body: request.method !== 'GET' && request.method !== 'HEAD' ? await request.text() : null,
+        body: request.method !== "GET" && request.method !== "HEAD" ? await request.text() : null,
       });
 
       // Make the request to the target server
@@ -66,18 +66,21 @@ export default {
       });
     } catch (error) {
       console.error("Proxy error:", error);
-      return new Response(JSON.stringify({
-        error: "Proxy error",
-        message: error.message
-      }), {
-        status: 500,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": origin,
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        },
-      });
+      return new Response(
+        JSON.stringify({
+          error: "Proxy error",
+          message: error.message,
+        }),
+        {
+          status: 500,
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": origin,
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          },
+        }
+      );
     }
   },
 };
