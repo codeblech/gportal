@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useAuth } from '../context/AuthContext';
 import { fetchAttendanceData, fetchMonthlyAttendanceData, fetchSubjectWiseAttendanceData, fetchDateWiseAttendanceData, fetchSemesterAttendanceData } from '../utils/attendance';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import { Skeleton } from '../components/ui/skeleton';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../components/ui/tabs';
 import { Calendar } from '../components/ui/calendar';
 import { Button } from '../components/ui/button';
@@ -164,8 +165,17 @@ export default function Attendance() {
               )}
 
               {todayLoading && (
-                <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
-                  <p className="text-muted-foreground">Loading today's attendance...</p>
+                <div className="space-y-4">
+                  <Card>
+                    <CardHeader>
+                      <Skeleton className="h-6 w-48" />
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <Skeleton className="h-4 w-full" />
+                      <Skeleton className="h-4 w-full" />
+                      <Skeleton className="h-4 w-3/4" />
+                    </CardContent>
+                  </Card>
                 </div>
               )}
 
@@ -228,8 +238,16 @@ export default function Attendance() {
 
           <TabsContent value="monthly">
               {monthlyLoading && (
-                <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
-                  <p className="text-muted-foreground">Loading monthly attendance...</p>
+                <div className="space-y-4">
+                  <Card>
+                    <CardHeader>
+                      <Skeleton className="h-6 w-48" />
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <Skeleton className="h-4 w-full" />
+                      <Skeleton className="h-2 w-full" />
+                    </CardContent>
+                  </Card>
                 </div>
               )}
 
@@ -352,8 +370,16 @@ export default function Attendance() {
                   <div className="space-y-4">
 
               {subjectLoading && (
-                <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
-                  <p className="text-muted-foreground">Loading subject-wise attendance...</p>
+                <div className="space-y-4">
+                  <Card>
+                    <CardHeader>
+                      <Skeleton className="h-6 w-48" />
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <Skeleton className="h-4 w-full" />
+                      <Skeleton className="h-2 w-full" />
+                    </CardContent>
+                  </Card>
                 </div>
               )}
 
@@ -410,8 +436,17 @@ export default function Attendance() {
                 <TabsContent value="datewise">
                   <div className="space-y-4">
                     {datewiseLoading && (
-                      <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
-                        <p className="text-muted-foreground">Loading date-wise attendance...</p>
+                      <div className="space-y-4">
+                        <Card>
+                          <CardHeader>
+                            <Skeleton className="h-6 w-48" />
+                          </CardHeader>
+                          <CardContent className="space-y-3">
+                            <Skeleton className="h-4 w-full" />
+                            <Skeleton className="h-4 w-full" />
+                            <Skeleton className="h-4 w-3/4" />
+                          </CardContent>
+                        </Card>
                       </div>
                     )}
 
