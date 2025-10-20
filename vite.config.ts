@@ -6,6 +6,7 @@ import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/gportal/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -31,6 +32,7 @@ export default defineConfig({
         name: "GPortal",
         short_name: "GPortal",
         description: "GL Bajaj College Student Portal",
+        start_url: "/gportal/",
         theme_color: "#000000",
         background_color: "#ffffff",
         display: "standalone",
