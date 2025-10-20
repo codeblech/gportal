@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import Attendance from "./pages/Attendance";
 import Grades from "./pages/Grades";
 import Exams from "./pages/Exams";
-import Subjects from "./pages/Subjects";
+import TimeTable from "./pages/TimeTable";
 import Profile from "./pages/Profile";
 import BottomNav from "./components/BottomNav";
 import Header from "./components/Header";
@@ -56,10 +56,10 @@ function App() {
               }
             />
             <Route
-              path="/subjects"
+              path="/timetable"
               element={
                 <AuthenticatedLayout>
-                  <Subjects />
+                  <TimeTable />
                 </AuthenticatedLayout>
               }
             />

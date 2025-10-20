@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom';
-import { BarChart3, ChartSpline, Calendar, BookOpen, User } from 'lucide-react';
+import { BarChart3, ChartSpline, Calendar, Table2, User } from 'lucide-react';
 
 export default function BottomNav() {
   const navItems = [
     { name: 'ATTENDANCE', path: '/attendance', icon: BarChart3 },
     { name: 'GRADES', path: '/grades', icon: ChartSpline },
     { name: 'EXAMS', path: '/exams', icon: Calendar },
-    { name: 'SUBJECTS', path: '/subjects', icon: BookOpen },
+    { name: 'TIME TABLE', path: '/timetable', icon: Table2 },
     { name: 'PROFILE', path: '/profile', icon: User },
   ];
 
