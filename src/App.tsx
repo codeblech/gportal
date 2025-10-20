@@ -3,8 +3,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./components/theme-provider";
 import Login from "./pages/Login";
 import Attendance from "./pages/Attendance";
-import Grades from "./pages/Grades";
-import Exams from "./pages/Exams";
+import Alerts from "./pages/Alerts";
 import TimeTable from "./pages/TimeTable";
 import Profile from "./pages/Profile";
 import BottomNav from "./components/BottomNav";
@@ -40,18 +39,10 @@ function App() {
               }
             />
             <Route
-              path="/grades"
+              path="/alerts"
               element={
                 <AuthenticatedLayout>
-                  <Grades />
-                </AuthenticatedLayout>
-              }
-            />
-            <Route
-              path="/exams"
-              element={
-                <AuthenticatedLayout>
-                  <Exams />
+                  <Alerts />
                 </AuthenticatedLayout>
               }
             />
