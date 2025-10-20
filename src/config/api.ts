@@ -5,10 +5,14 @@
  * It automatically uses the correct URL based on the environment:
  *
  * - Development: /api/glbajaj (proxied by Vite to https://glbg.servergi.com:8072/ISIMGLB)
- * - Production: https://gportal-proxy-server.my-malikyash.workers.dev/api/glbajaj
+ * - Production: https://gportal.yashmalik.tech/api/glbajaj
  */
 
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api/glbajaj";
+const DEFAULT_API_BASE = import.meta.env.DEV
+  ? "/api/glbajaj"
+  : "https://gportal.yashmalik.tech/api/glbajaj";
+
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || DEFAULT_API_BASE;
 
 /**
  * Helper function to build API URLs
