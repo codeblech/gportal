@@ -1,21 +1,22 @@
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import { useState, useEffect } from 'react';
-import { Button } from '../components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
-import PublicHeader from '../components/PublicHeader';
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { useState, useEffect } from "react";
+import { Button } from "../components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import { Input } from "../components/ui/input";
+import { Label } from "../components/ui/label";
+import PublicHeader from "../components/PublicHeader";
+import { getApiUrl } from "@/config/api";
 
 export default function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
-  const [captchaUrl, setCaptchaUrl] = useState<string>('');
+  const [captchaUrl, setCaptchaUrl] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [captcha, setCaptcha] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [captcha, setCaptcha] = useState("");
 
   useEffect(() => {
     fetchCaptcha();
@@ -25,27 +26,25 @@ export default function Login() {
     try {
       setLoading(true);
       // Add timestamp to bypass cache
-      const response = await fetch(`/api/glbajaj/Login?_=${Date.now()}`);
+      const response = await fetch(`${getApiUrl("/Login")}?_=${Date.now()}`);
       const html = await response.text();
       const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-      const captchaImg = doc.querySelector('#Image1') as HTMLImageElement;
+      const doc = parser.parseFromString(html, "text/html");
+      const captchaImg = doc.querySelector("#Image1") as HTMLImageElement;
 
       if (captchaImg) {
-        const captchaSrc = captchaImg.getAttribute('src');
+        const captchaSrc = captchaImg.getAttribute("src");
         if (captchaSrc) {
-          const fullCaptchaUrl = captchaSrc.startsWith('http')
-            ? captchaSrc
-            : `/api/glbajaj/${captchaSrc}`;
+          const fullCaptchaUrl = captchaSrc.startsWith("http") ? captchaSrc : `${getApiUrl("")}/${captchaSrc}`;
           // Add timestamp to captcha URL to prevent caching
-          const cacheBustedUrl = fullCaptchaUrl.includes('?')
+          const cacheBustedUrl = fullCaptchaUrl.includes("?")
             ? `${fullCaptchaUrl}&_=${Date.now()}`
             : `${fullCaptchaUrl}?_=${Date.now()}`;
           setCaptchaUrl(cacheBustedUrl);
         }
       }
     } catch (error) {
-      console.error('Failed to fetch captcha:', error);
+      console.error("Failed to fetch captcha:", error);
     } finally {
       setLoading(false);
     }
@@ -57,9 +56,9 @@ export default function Login() {
 
     try {
       await login(username, password, captcha);
-      navigate('/attendance');
+      navigate("/attendance");
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error("Login failed:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -107,11 +106,7 @@ export default function Login() {
                 {loading ? (
                   <span className="text-sm text-muted-foreground">Loading captcha...</span>
                 ) : captchaUrl ? (
-                  <img
-                    src={captchaUrl}
-                    alt="Captcha"
-                    className="h-auto max-w-full"
-                  />
+                  <img src={captchaUrl} alt="Captcha" className="h-auto max-w-full" />
                 ) : (
                   <span className="text-sm text-muted-foreground">Failed to load captcha</span>
                 )}
@@ -127,11 +122,7 @@ export default function Login() {
               />
             </div>
 
-            <Button
-              type="submit"
-              className="cursor-pointer w-full"
-              disabled={isSubmitting || loading || !captchaUrl}
-            >
+            <Button type="submit" className="cursor-pointer w-full" disabled={isSubmitting || loading || !captchaUrl}>
               {isSubmitting ? "Signing in..." : "Sign in"}
             </Button>
           </form>
