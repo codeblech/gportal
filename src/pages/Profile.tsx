@@ -5,7 +5,6 @@ import { fetchProfileData, fetchOfficialDetailsData, fetchQualificationData } fr
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import { Skeleton } from "../components/ui/skeleton";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../components/ui/tabs";
-import { getApiUrl } from "@/config/api";
 
 export default function Profile() {
   const { payloadData } = useAuth();
@@ -121,13 +120,6 @@ export default function Profile() {
       <Card>
         <CardContent className="pt-6">
           <div className="flex flex-col items-center gap-4">
-            {profileData.photo && (
-              <img
-                src={getApiUrl(profileData.photo)}
-                alt="Profile"
-                className="w-32 h-32 rounded-lg object-cover border-2 border-border"
-              />
-            )}
             <div className="text-center">
               <h2 className="text-2xl font-bold">{profileData.name}</h2>
               <p className="text-muted-foreground">{profileData.admissionNo}</p>
