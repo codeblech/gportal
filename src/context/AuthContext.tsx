@@ -1,4 +1,5 @@
 import { createContext, useContext, ReactNode, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import { getApiUrl } from "@/config/api";
 
 interface AuthContextType {
@@ -18,6 +19,8 @@ interface PayloadData {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
+  const queryClient = useQueryClient();
+
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     const saved = localStorage.getItem("isAuthenticated");
     return saved === "true";
@@ -30,6 +33,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = async (username: string, password: string, captcha: string) => {
     try {
       console.log("Starting login process...");
+
+      // Clear all cached data before login
+      queryClient.clear();
+      localStorage.clear();
+      sessionStorage.clear();
 
       // First, get the login page to extract payload data
       console.log("Fetching login page...");
@@ -168,7 +176,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       formData.append("ctl00$txtCaseCSS", txtCaseCSS);
 
       // POST to home which will trigger logout and cookie clearing
-      await fetch(getApiUrl("/Home"), {
+      const logoutResponse = await fetch(getApiUrl("/Home"), {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -177,15 +185,40 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         credentials: "include",
         redirect: "manual", // Don't follow the redirect to Login
       });
+
+      console.log("Logout response status:", logoutResponse.status);
+      console.log("Logout response headers:", Object.fromEntries(logoutResponse.headers.entries()));
+
+      // Follow the redirect to complete the logout process
+      if (logoutResponse.status === 302 || logoutResponse.status === 303) {
+        const redirectUrl = logoutResponse.headers.get("Location");
+        if (redirectUrl) {
+          await fetch(getApiUrl(redirectUrl), {
+            credentials: "include",
+          });
+        }
+      }
     } catch (error) {
       console.error("Server logout failed:", error);
     }
 
+    // Clear all cookies that JavaScript can access
+    document.cookie.split(";").forEach((cookie) => {
+      const name = cookie.split("=")[0].trim();
+      // Clear cookie for all possible paths and domains
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname}`;
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${window.location.hostname}`;
+    });
+
+    // Clear all cached query data
+    queryClient.clear();
+
     // Clear client-side state regardless of server response
     setIsAuthenticated(false);
     setPayloadData(null);
-    localStorage.removeItem("payloadData");
-    localStorage.removeItem("isAuthenticated");
+    localStorage.clear();
+    sessionStorage.clear();
   };
 
   return (
