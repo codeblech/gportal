@@ -126,7 +126,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = async () => {
     try {
       // First, fetch the home page to get the current payload data needed for logout
-      const homePageResponse = await fetch(getApiUrl("/home"), {
+      const homePageResponse = await fetch(getApiUrl("/Home"), {
         credentials: "include",
       });
       const homeHtml = await homePageResponse.text();
@@ -168,7 +168,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       formData.append("ctl00$txtCaseCSS", txtCaseCSS);
 
       // POST to home which will trigger logout and cookie clearing
-      await fetch(getApiUrl("/home"), {
+      await fetch(getApiUrl("/Home"), {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

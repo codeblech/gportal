@@ -18,7 +18,65 @@ export default defineConfig({
         target: "https://glbg.servergi.com:8072",
         changeOrigin: true,
         secure: false,
+        followRedirects: true,
         rewrite: (path) => path.replace(/^\/api\/glbajaj/, "/ISIMGLB"),
+        configure: (proxy, _options) => {
+          proxy.on("error", (err, _req, _res) => {
+            console.log("proxy error", err);
+          });
+          proxy.on("proxyReq", (proxyReq, req, _res) => {
+            console.log("Sending Request to the Target:", req.method, req.url, "->", proxyReq.path);
+          });
+          proxy.on("proxyRes", (proxyRes, req, _res) => {
+            console.log("Received Response from the Target:", proxyRes.statusCode, req.url);
+            // Rewrite Location header to go through proxy
+            if (proxyRes.headers.location) {
+              const location = proxyRes.headers.location;
+              console.log("Original redirect location:", location);
+              // Convert absolute URLs to use the proxy path
+              if (location.includes("glbg.servergi.com")) {
+                const url = new URL(location);
+                // Rewrite /ISIMGLB/* to /api/glbajaj/*
+                const newPath = url.pathname.replace(/^\/ISIMGLB/, "/api/glbajaj");
+                proxyRes.headers.location = newPath;
+                console.log("Rewritten redirect location:", proxyRes.headers.location);
+              } else if (location.startsWith("/ISIMGLB")) {
+                // Handle relative URLs that start with /ISIMGLB
+                proxyRes.headers.location = location.replace(/^\/ISIMGLB/, "/api/glbajaj");
+                console.log("Rewritten redirect location:", proxyRes.headers.location);
+              }
+            }
+          });
+        },
+      },
+      "/ISIMGLB": {
+        target: "https://glbg.servergi.com:8072",
+        changeOrigin: true,
+        secure: false,
+        followRedirects: true,
+        configure: (proxy, _options) => {
+          proxy.on("error", (err, _req, _res) => {
+            console.log("proxy error", err);
+          });
+          proxy.on("proxyReq", (proxyReq, req, _res) => {
+            console.log("Sending Request to the Target:", req.method, req.url, "->", proxyReq.path);
+          });
+          proxy.on("proxyRes", (proxyRes, req, _res) => {
+            console.log("Received Response from the Target:", proxyRes.statusCode, req.url);
+            // Rewrite Location header to go through proxy
+            if (proxyRes.headers.location) {
+              const location = proxyRes.headers.location;
+              console.log("Original redirect location:", location);
+              // If redirecting to /ISIMGLB/*, keep it as is (will be proxied)
+              // If redirecting to absolute URL, convert to relative
+              if (location.includes("glbg.servergi.com")) {
+                const url = new URL(location);
+                proxyRes.headers.location = url.pathname;
+                console.log("Rewritten redirect location:", proxyRes.headers.location);
+              }
+            }
+          });
+        },
       },
     },
   },
