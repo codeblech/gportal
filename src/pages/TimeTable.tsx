@@ -135,7 +135,7 @@ export default function TimeTable() {
   );
 
   return (
-    <div className="px-3 pb-8">
+    <div className="px-3 pb-8 pt-2">
       {!payloadData && (
         <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
           <p className="text-muted-foreground">Please log in to view your timetable.</p>

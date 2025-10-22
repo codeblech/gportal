@@ -116,290 +116,295 @@ export default function Profile() {
 
           {profileData && (
             <div className="space-y-4">
-      {/* Profile Photo and Basic Info */}
-      <Card>
-        <CardContent className="pt-6">
-          <div className="flex flex-col items-center gap-4">
-            <div className="text-center">
-              <h2 className="text-2xl font-bold">{profileData.name}</h2>
-              <p className="text-muted-foreground">{profileData.admissionNo}</p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+              {/* Profile Photo and Basic Info */}
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="text-center">
+                      <h2 className="text-2xl font-bold">{profileData.name}</h2>
+                      <p className="text-muted-foreground">{profileData.admissionNo}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
 
-      {/* Personal Information */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Personal Information</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
-            {profileData.admissionNo && (
-              <>
-                <div className="text-muted-foreground font-medium">Admission No:</div>
-                <div>{profileData.admissionNo}</div>
-              </>
-            )}
-            {profileData.regFormNo && (
-              <>
-                <div className="text-muted-foreground font-medium">Reg. Form No:</div>
-                <div>{profileData.regFormNo}</div>
-              </>
-            )}
-            {profileData.name && (
-              <>
-                <div className="text-muted-foreground font-medium">Name:</div>
-                <div>{profileData.name}</div>
-              </>
-            )}
-            {profileData.gender && (
-              <>
-                <div className="text-muted-foreground font-medium">Gender:</div>
-                <div>{profileData.gender}</div>
-              </>
-            )}
-            {profileData.bloodGroup && (
-              <>
-                <div className="text-muted-foreground font-medium">Blood Group:</div>
-                <div>{profileData.bloodGroup}</div>
-              </>
-            )}
-            {profileData.dob && (
-              <>
-                <div className="text-muted-foreground font-medium">Date of Birth:</div>
-                <div>{profileData.dob}</div>
-              </>
-            )}
-            {profileData.email && (
-              <>
-                <div className="text-muted-foreground font-medium">Email:</div>
-                <div>{profileData.email}</div>
-              </>
-            )}
-            {profileData.phone && (
-              <>
-                <div className="text-muted-foreground font-medium">Phone:</div>
-                <div>{profileData.phone}</div>
-              </>
-            )}
-          </div>
-        </CardContent>
-      </Card>
+              {/* Personal Information */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>Personal Information</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
+                    {profileData.admissionNo && (
+                      <>
+                        <div className="text-muted-foreground font-medium">Admission No:</div>
+                        <div>{profileData.admissionNo}</div>
+                      </>
+                    )}
+                    {profileData.regFormNo && (
+                      <>
+                        <div className="text-muted-foreground font-medium">Reg. Form No:</div>
+                        <div>{profileData.regFormNo}</div>
+                      </>
+                    )}
+                    {profileData.name && (
+                      <>
+                        <div className="text-muted-foreground font-medium">Name:</div>
+                        <div>{profileData.name}</div>
+                      </>
+                    )}
+                    {profileData.gender && (
+                      <>
+                        <div className="text-muted-foreground font-medium">Gender:</div>
+                        <div>{profileData.gender}</div>
+                      </>
+                    )}
+                    {profileData.bloodGroup && (
+                      <>
+                        <div className="text-muted-foreground font-medium">Blood Group:</div>
+                        <div>{profileData.bloodGroup}</div>
+                      </>
+                    )}
+                    {profileData.dob && (
+                      <>
+                        <div className="text-muted-foreground font-medium">Date of Birth:</div>
+                        <div>{profileData.dob}</div>
+                      </>
+                    )}
+                    {profileData.email && (
+                      <>
+                        <div className="text-muted-foreground font-medium">Email:</div>
+                        <div>{profileData.email}</div>
+                      </>
+                    )}
+                    {profileData.phone && (
+                      <>
+                        <div className="text-muted-foreground font-medium">Phone:</div>
+                        <div>{profileData.phone}</div>
+                      </>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
 
-      {/* Present Address */}
-      {(profileData.presentAddress || profileData.city || profileData.state || profileData.pinCode) && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Present Address</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
-              {profileData.presentAddress && (
-                <>
-                  <div className="text-muted-foreground font-medium">Address:</div>
-                  <div>{profileData.presentAddress}</div>
-                </>
+              {/* Present Address */}
+              {(profileData.presentAddress || profileData.city || profileData.state || profileData.pinCode) && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Present Address</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
+                      {profileData.presentAddress && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Address:</div>
+                          <div>{profileData.presentAddress}</div>
+                        </>
+                      )}
+                      {profileData.city && (
+                        <>
+                          <div className="text-muted-foreground font-medium">City:</div>
+                          <div>{profileData.city}</div>
+                        </>
+                      )}
+                      {profileData.state && (
+                        <>
+                          <div className="text-muted-foreground font-medium">State:</div>
+                          <div>{profileData.state}</div>
+                        </>
+                      )}
+                      {profileData.pinCode && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Pin Code:</div>
+                          <div>{profileData.pinCode}</div>
+                        </>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
               )}
-              {profileData.city && (
-                <>
-                  <div className="text-muted-foreground font-medium">City:</div>
-                  <div>{profileData.city}</div>
-                </>
-              )}
-              {profileData.state && (
-                <>
-                  <div className="text-muted-foreground font-medium">State:</div>
-                  <div>{profileData.state}</div>
-                </>
-              )}
-              {profileData.pinCode && (
-                <>
-                  <div className="text-muted-foreground font-medium">Pin Code:</div>
-                  <div>{profileData.pinCode}</div>
-                </>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-      )}
 
-      {/* Local Guardian Information */}
-      {(profileData.localGuardianName || profileData.localGuardianAddress || profileData.localGuardianPhone) && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Local Guardian Information</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
-              {profileData.localGuardianName && (
-                <>
-                  <div className="text-muted-foreground font-medium">Name:</div>
-                  <div>{profileData.localGuardianName}</div>
-                </>
+              {/* Local Guardian Information */}
+              {(profileData.localGuardianName ||
+                profileData.localGuardianAddress ||
+                profileData.localGuardianPhone) && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Local Guardian Information</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
+                      {profileData.localGuardianName && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Name:</div>
+                          <div>{profileData.localGuardianName}</div>
+                        </>
+                      )}
+                      {profileData.localGuardianAddress && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Address:</div>
+                          <div>{profileData.localGuardianAddress}</div>
+                        </>
+                      )}
+                      {profileData.localGuardianPhone && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Phone:</div>
+                          <div>{profileData.localGuardianPhone}</div>
+                        </>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
               )}
-              {profileData.localGuardianAddress && (
-                <>
-                  <div className="text-muted-foreground font-medium">Address:</div>
-                  <div>{profileData.localGuardianAddress}</div>
-                </>
-              )}
-              {profileData.localGuardianPhone && (
-                <>
-                  <div className="text-muted-foreground font-medium">Phone:</div>
-                  <div>{profileData.localGuardianPhone}</div>
-                </>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-      )}
 
-      {/* Father's Information */}
-      {(profileData.fatherName || profileData.fatherMobile || profileData.fatherEmail) && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Father's Information</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
-              {profileData.fatherName && (
-                <>
-                  <div className="text-muted-foreground font-medium">Name:</div>
-                  <div>{profileData.fatherName}</div>
-                </>
+              {/* Father's Information */}
+              {(profileData.fatherName || profileData.fatherMobile || profileData.fatherEmail) && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Father's Information</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
+                      {profileData.fatherName && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Name:</div>
+                          <div>{profileData.fatherName}</div>
+                        </>
+                      )}
+                      {profileData.fatherMobile && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Mobile:</div>
+                          <div>{profileData.fatherMobile}</div>
+                        </>
+                      )}
+                      {profileData.fatherEmail && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Email:</div>
+                          <div>{profileData.fatherEmail}</div>
+                        </>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
               )}
-              {profileData.fatherMobile && (
-                <>
-                  <div className="text-muted-foreground font-medium">Mobile:</div>
-                  <div>{profileData.fatherMobile}</div>
-                </>
-              )}
-              {profileData.fatherEmail && (
-                <>
-                  <div className="text-muted-foreground font-medium">Email:</div>
-                  <div>{profileData.fatherEmail}</div>
-                </>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-      )}
 
-      {/* Mother's Information */}
-      {(profileData.motherName || profileData.motherMobile || profileData.motherEmail) && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Mother's Information</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
-              {profileData.motherName && (
-                <>
-                  <div className="text-muted-foreground font-medium">Name:</div>
-                  <div>{profileData.motherName}</div>
-                </>
+              {/* Mother's Information */}
+              {(profileData.motherName || profileData.motherMobile || profileData.motherEmail) && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Mother's Information</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
+                      {profileData.motherName && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Name:</div>
+                          <div>{profileData.motherName}</div>
+                        </>
+                      )}
+                      {profileData.motherMobile && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Mobile:</div>
+                          <div>{profileData.motherMobile}</div>
+                        </>
+                      )}
+                      {profileData.motherEmail && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Email:</div>
+                          <div>{profileData.motherEmail}</div>
+                        </>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
               )}
-              {profileData.motherMobile && (
-                <>
-                  <div className="text-muted-foreground font-medium">Mobile:</div>
-                  <div>{profileData.motherMobile}</div>
-                </>
-              )}
-              {profileData.motherEmail && (
-                <>
-                  <div className="text-muted-foreground font-medium">Email:</div>
-                  <div>{profileData.motherEmail}</div>
-                </>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-      )}
 
-      {/* Guardian Additional Information */}
-      {(profileData.occupation || profileData.designation || profileData.annualIncome || profileData.guardianMobile) && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Guardian Additional Information</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
-              {profileData.occupation && (
-                <>
-                  <div className="text-muted-foreground font-medium">Occupation:</div>
-                  <div>{profileData.occupation}</div>
-                </>
+              {/* Guardian Additional Information */}
+              {(profileData.occupation ||
+                profileData.designation ||
+                profileData.annualIncome ||
+                profileData.guardianMobile) && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Guardian Additional Information</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
+                      {profileData.occupation && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Occupation:</div>
+                          <div>{profileData.occupation}</div>
+                        </>
+                      )}
+                      {profileData.designation && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Designation:</div>
+                          <div>{profileData.designation}</div>
+                        </>
+                      )}
+                      {profileData.annualIncome && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Annual Income:</div>
+                          <div>{profileData.annualIncome}</div>
+                        </>
+                      )}
+                      {profileData.guardianMobile && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Mobile:</div>
+                          <div>{profileData.guardianMobile}</div>
+                        </>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
               )}
-              {profileData.designation && (
-                <>
-                  <div className="text-muted-foreground font-medium">Designation:</div>
-                  <div>{profileData.designation}</div>
-                </>
-              )}
-              {profileData.annualIncome && (
-                <>
-                  <div className="text-muted-foreground font-medium">Annual Income:</div>
-                  <div>{profileData.annualIncome}</div>
-                </>
-              )}
-              {profileData.guardianMobile && (
-                <>
-                  <div className="text-muted-foreground font-medium">Mobile:</div>
-                  <div>{profileData.guardianMobile}</div>
-                </>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-      )}
 
-      {/* Permanent Address */}
-      {(profileData.permanentAddress ||
-        profileData.permanentCity ||
-        profileData.permanentState ||
-        profileData.permanentPinCode ||
-        profileData.permanentPhone) && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Permanent Address</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
-              {profileData.permanentAddress && (
-                <>
-                  <div className="text-muted-foreground font-medium">Address:</div>
-                  <div>{profileData.permanentAddress}</div>
-                </>
+              {/* Permanent Address */}
+              {(profileData.permanentAddress ||
+                profileData.permanentCity ||
+                profileData.permanentState ||
+                profileData.permanentPinCode ||
+                profileData.permanentPhone) && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Permanent Address</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
+                      {profileData.permanentAddress && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Address:</div>
+                          <div>{profileData.permanentAddress}</div>
+                        </>
+                      )}
+                      {profileData.permanentCity && (
+                        <>
+                          <div className="text-muted-foreground font-medium">City:</div>
+                          <div>{profileData.permanentCity}</div>
+                        </>
+                      )}
+                      {profileData.permanentState && (
+                        <>
+                          <div className="text-muted-foreground font-medium">State:</div>
+                          <div>{profileData.permanentState}</div>
+                        </>
+                      )}
+                      {profileData.permanentPinCode && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Pin Code:</div>
+                          <div>{profileData.permanentPinCode}</div>
+                        </>
+                      )}
+                      {profileData.permanentPhone && (
+                        <>
+                          <div className="text-muted-foreground font-medium">Phone:</div>
+                          <div>{profileData.permanentPhone}</div>
+                        </>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
               )}
-              {profileData.permanentCity && (
-                <>
-                  <div className="text-muted-foreground font-medium">City:</div>
-                  <div>{profileData.permanentCity}</div>
-                </>
-              )}
-              {profileData.permanentState && (
-                <>
-                  <div className="text-muted-foreground font-medium">State:</div>
-                  <div>{profileData.permanentState}</div>
-                </>
-              )}
-              {profileData.permanentPinCode && (
-                <>
-                  <div className="text-muted-foreground font-medium">Pin Code:</div>
-                  <div>{profileData.permanentPinCode}</div>
-                </>
-              )}
-              {profileData.permanentPhone && (
-                <>
-                  <div className="text-muted-foreground font-medium">Phone:</div>
-                  <div>{profileData.permanentPhone}</div>
-                </>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-      )}
             </div>
           )}
         </TabsContent>
@@ -456,7 +461,7 @@ export default function Profile() {
                     {officialData.status && (
                       <>
                         <div className="text-muted-foreground font-medium">Status:</div>
-                        <div className="font-semibold text-chart-3">{officialData.status}</div>
+                        <div className="font-semibold text-primary">{officialData.status}</div>
                       </>
                     )}
                     {officialData.session && (

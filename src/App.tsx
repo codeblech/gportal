@@ -4,6 +4,7 @@ import { ThemeProvider } from "./components/theme-provider";
 import Login from "./pages/Login";
 import Attendance from "./pages/Attendance";
 import Alerts from "./pages/Alerts";
+import Grades from "./pages/Grades";
 import TimeTable from "./pages/TimeTable";
 import Profile from "./pages/Profile";
 import BottomNav from "./components/BottomNav";
@@ -43,6 +44,14 @@ function App() {
               element={
                 <AuthenticatedLayout>
                   <Alerts />
+                </AuthenticatedLayout>
+              }
+            />
+            <Route
+              path="/grades"
+              element={
+                <AuthenticatedLayout>
+                  <Grades />
                 </AuthenticatedLayout>
               }
             />

@@ -1,16 +1,17 @@
 import { NavLink } from 'react-router-dom';
-import { BarChart3, Bell, Table2, User } from 'lucide-react';
+import { BarChart3, Bell, ChartSpline, Table2, User } from 'lucide-react';
 
 export default function BottomNav() {
   const navItems = [
     { name: 'ATTENDANCE', path: '/attendance', icon: BarChart3 },
     { name: 'ALERTS', path: '/alerts', icon: Bell },
+    { name: 'GRADES', path: '/grades', icon: ChartSpline },
     { name: 'TIME TABLE', path: '/timetable', icon: Table2 },
     { name: 'PROFILE', path: '/profile', icon: User },
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 flex w-screen items-center justify-between gap-2 bg-muted px-4 py-4 sm:gap-0">
+    <div className="fixed bottom-0 left-0 flex w-screen items-center justify-between gap-1 bg-muted px-2 py-4 sm:gap-0 sm:px-4">
       {navItems.map((item) => (
         <NavLink
           key={item.name}
