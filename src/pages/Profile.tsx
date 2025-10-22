@@ -69,7 +69,7 @@ export default function Profile() {
   }
 
   return (
-    <div className="px-3 pb-8">
+    <div className="px-3 pb-8 pt-2">
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="w-full grid grid-cols-3 bg-background gap-3 mb-4">
           <TabsTrigger

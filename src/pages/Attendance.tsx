@@ -89,14 +89,15 @@ export default function Attendance() {
     enabled: !!payloadData && activeTab === 'calendar' && subjectTab === 'datewise' && !!sharedDateRange,
   });
 
-  const handleShowAttendance = () => {
+  // Automatically update shared date range when a valid range is selected
+  useEffect(() => {
     if (dateRange?.from && dateRange?.to) {
       setSharedDateRange({
         from: format(dateRange.from, 'dd/MM/yyyy'),
         to: format(dateRange.to, 'dd/MM/yyyy'),
       });
     }
-  };
+  }, [dateRange]);
 
   return (
     <div className="px-3 pb-8 pt-2">
@@ -339,14 +340,6 @@ export default function Attendance() {
                       </PopoverContent>
                     </Popover>
                   </div>
-
-                  <Button
-                    onClick={handleShowAttendance}
-                    disabled={!dateRange?.from || !dateRange?.to}
-                    className="w-full"
-                  >
-                    Show Attendance
-                  </Button>
                 </CardContent>
               </Card>
 
